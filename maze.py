@@ -13,7 +13,7 @@ class Maze:
             cell_size_x,
             cell_size_y,
             window=None,
-            seed=None,
+            #seed=None,
     ):
         self._cells = []
         self._x1 = x1
@@ -23,8 +23,8 @@ class Maze:
         self._cell_size_x = cell_size_x
         self._cell_size_y = cell_size_y
         self._window = window
-        if seed:
-            random.seed(seed)
+        #if seed:
+         #   random.seed(seed)
 
         self._create_cells()
         self._break_entrance_and_exit()
@@ -48,12 +48,11 @@ class Maze:
         if self._window is None:
             return
         
-        x1 = self._x1 + j * self._cell_size_x
+        x1 = self._x1 + i * self._cell_size_x
+        y1 = self._y1 + j * self._cell_size_y
         x2 = x1 + self._cell_size_x
-        y1 = self._y1 + i * self._cell_size_y
         y2 = y1 + self._cell_size_y
         self._cells[i][j].draw(x1, y1, x2, y2)
-
         self._animate()
 
     def _animate(self):
@@ -70,7 +69,7 @@ class Maze:
         # by removing the walls of the first and last cells
         self._cells[0][0].has_top_wall = False
         self._draw_cell(0, 0)
-        self._cells[self._num_columns -1][self._num_rows -1].has_bottom_wall = False
+        self._cells[self._num_columns - 1][self._num_rows - 1].has_bottom_wall = False
         self._draw_cell(self._num_columns - 1, self._num_rows - 1)
 
 

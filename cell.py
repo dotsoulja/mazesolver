@@ -19,34 +19,37 @@ class Cell:
         
         
     def draw(self, x1, y1, x2, y2):
+        if self._window is None:
+            return
+        
         self._x1 = x1
         self._x2 = x2
         self._y1 = y1
         self._y2 = y2
         if self.has_left_wall:
             line = Line(Point(x1, y1), Point(x1, y2))
-            self._window.draw_line(line)
+            self._window.draw_line(line, "white")
         else:
             line = Line(Point(x1, y1), Point(x1, y2))
-            self._window.draw_line(line, "white")
+            self._window.draw_line(line, "black")
         if self.has_top_wall:
             line = Line(Point(x1, y1), Point(x2, y1))
-            self._window.draw_line(line)
+            self._window.draw_line(line, "white")
         else:
             line = Line(Point(x1, y1), Point(x2, y1))
-            self._window.draw_line(line, "white")
+            self._window.draw_line(line, "black")
         if self.has_right_wall:
             line = Line(Point(x2, y1), Point(x2, y2))
-            self._window.draw_line(line)
+            self._window.draw_line(line, "white")
         else:
             line = Line(Point(x2, y1), Point(x2, y2))
-            self._window.draw_line(line, "white")
+            self._window.draw_line(line, "black")
         if self.has_bottom_wall:
             line = Line(Point(x1, y2), Point(x2, y2))
-            self._window.draw_line(line)
+            self._window.draw_line(line, "white")
         else:
             line = Line(Point(x1, y2), Point(x2, y2))
-            self._window.draw_line(line, "white")
+            self._window.draw_line(line, "black")
 
     # method to draw a path from center of one cell to another.
     def draw_move(self, to_cell, undo=False):
@@ -58,9 +61,9 @@ class Cell:
         to_x_center = to_cell._x1 + to_half_length
         to_y_center = to_cell._y1 + to_half_length
 
-        fill_color = "green"
+        fill_color = "blue"
         if undo:
-            fill_color = "red"
+            fill_color = "#101333"
 
 
         line = Line(Point(x_center, y_center), Point(to_x_center, to_y_center))

@@ -3,7 +3,7 @@ from maze import Maze
 import sys
 
 def main():
-    num_rows = 12
+    num_rows = 14
     num_columns = 16
     margin = 50
     screen_x = 800
@@ -12,7 +12,7 @@ def main():
     cell_size_y = (screen_y - 2 * margin) / num_rows
     
     sys.setrecursionlimit(10000)
-    window = Window(screen_x -175, screen_y + 150)
+    window = Window(screen_x, screen_y)
 
     maze = Maze(
         margin,
@@ -22,7 +22,6 @@ def main():
         cell_size_x,
         cell_size_y,
         window,
-        10,
     )
     print("Maze created!!")
     is_solvable = maze.solve()
