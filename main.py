@@ -1,24 +1,26 @@
 from visuals import Window
-from cell import Cell
+from maze import Maze
 
 def main():
-    window = Window(800, 600,)
-    
-    c = Cell(window)
-    c.has_left_wall = False
-    c.draw(50, 50, 100, 100)
+    num_rows = 12
+    num_columns = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_columns
+    cell_size_y = (screen_y - 2 * margin) / num_rows
+    window = Window(screen_x -175, screen_y + 150)
 
-    c = Cell(window)
-    c.has_top_wall = False
-    c.draw(400, 400, 450, 450)
-
-    c = Cell(window)
-    c.has_right_wall = False
-    c.draw(125, 125, 175, 175)
-
-    c = Cell(window)
-    c.has_bottom_wall = False
-    c.draw(225, 225, 275, 275)
+    maze = Maze(
+        margin,
+        margin,
+        num_rows, 
+        num_columns,
+        cell_size_x,
+        cell_size_y,
+        window,
+        10,
+    )
 
     window.wait_for_close()
 
