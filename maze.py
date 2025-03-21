@@ -190,6 +190,7 @@ class Maze:
                 return True
             else:
                 self._cells[i][j].draw_move(self._cells[i][j + 1], True)
+                
 
         # If we get here, then we have hit a dead end
         return False
@@ -198,4 +199,4 @@ class Maze:
 
     def solve(self):
         return self._solve_r(0, 0)
- 
+    
